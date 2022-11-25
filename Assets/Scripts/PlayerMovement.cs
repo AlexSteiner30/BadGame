@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed;
 
-    private Vector2 movement;
+    private Vector3 mousePos;
 
     private void Start()
     {
@@ -19,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Inputs();
         Rotate();
     }
 
@@ -28,21 +28,19 @@ public class PlayerMovement : MonoBehaviour
         Move();
     }
 
-    private void Inputs()
-    {
-        movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-    }
 
     private void Move()
     {
-        transform.Translate((transform.up * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized * speed * Time.deltaTime);
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = transform.position.z;
+
+        transform.position = Vector3.MoveTowards(transform.position, mousePos, speed * Time.deltaTime);
     }
 
     private void Rotate()
     {
-        Vector2 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
-        float zRot = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg - 90f;
+        float zRot = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
 
-        transform.rotation = Quaternion.Euler(0f,0f, zRot);
+        transform.localEulerAngles = Quaternion.Euler(0f,0f, zRot).eulerAngles;
     }
 }
