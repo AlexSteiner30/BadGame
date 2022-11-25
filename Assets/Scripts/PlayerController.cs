@@ -1,10 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerController : MonoBehaviour
 {
+    public PhotonView photonView;
+
     public GameObject shootingPos;
+
+    private void Start()
+    {
+        photonView = GetComponentInParent<PhotonView>();
+
+        if(!photonView.IsMine)
+        {
+            GetComponent<PlayerController>().enabled = false;
+            GetComponent<PlayerMovement>().enabled = false;
+        }
+    }
 
     private void Update()
     {
@@ -21,7 +35,8 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward, 40);
 
-        Debug.DrawRay(transform.position, transform.forward, Color.red, 1);
+        Vector3 forward = transform.TransformDirection(Vector3.forward) * 10;
+        Debug.DrawRay(transform.position, forward, Color.green);
 
         print("Shooting");
     }
