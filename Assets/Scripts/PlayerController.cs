@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        photonView = GetComponentInParent<PhotonView>();
+        photonView = GetComponent<PhotonView>();
 
         if(!photonView.IsMine)
         {

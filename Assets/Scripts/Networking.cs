@@ -5,7 +5,7 @@ using Photon.Pun;
 
 public class Networking : MonoBehaviourPunCallbacks
 {
-    public GameObject offlinePlayer;
+    public Camera camera;
 
     private void Start()
     {
@@ -19,7 +19,8 @@ public class Networking : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.Instantiate("Player", offlinePlayer.transform.position, Quaternion.identity);
-        Destroy(offlinePlayer);
+        GameObject instantiatePlayer = PhotonNetwork.Instantiate("Player", new Vector2(0f, 0f), Quaternion.identity);
+
+        GameObject.Find("Main Camera").GetComponent<CameraController>().player = instantiatePlayer.transform;
     }
 }
