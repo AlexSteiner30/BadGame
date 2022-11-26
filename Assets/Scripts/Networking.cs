@@ -20,6 +20,7 @@ public class Networking : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         GameObject instantiatePlayer = PhotonNetwork.Instantiate("Player", new Vector2(0f, 0f), Quaternion.identity);
+        instantiatePlayer.GetComponent<PlayerMovement>().camera = camera;
 
         GameObject.Find("Main Camera").GetComponent<CameraController>().player = instantiatePlayer.transform;
     }

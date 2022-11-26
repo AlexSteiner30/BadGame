@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5251967573707342537}
+  camera: {fileID: 0}
   speed: 3
 --- !u!114 &4272850502196981600
 MonoBehaviour:
@@ -236,3 +237,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   photonView: {fileID: 6586533260289866219}
   shootingPos: {fileID: 7837260959297209533}
+  shootingButton: {fileID: 0}

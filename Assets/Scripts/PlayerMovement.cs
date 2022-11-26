@@ -7,6 +7,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public Camera camera;
 
     public float speed;
 
@@ -30,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Inputs()
     {
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
     }
 
     private void Move()
