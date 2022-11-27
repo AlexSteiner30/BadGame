@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -27,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(float yPos)
     {
-        transform.position += new Vector3(0, yPos * speed);
+        transform.Translate(Vector2.up * Time.deltaTime * speed * yPos);
 
         Vector2 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         transform.position = new Vector2(transform.position.x, Mathf.Clamp(transform.position.y, -screenBounds.y + 1, screenBounds.y - 1));
