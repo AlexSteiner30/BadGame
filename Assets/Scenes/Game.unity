@@ -1058,7 +1058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   origin: {fileID: 671202051}
   bullet: {fileID: 3635210706233049891, guid: c94c168b8fbad4528903b58815e34c63, type: 3}
-  speed: 200
+  speed: 10
   zRot: 90
 --- !u!61 &953781314
 BoxCollider2D:
@@ -2145,7 +2145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   origin: {fileID: 1518400176}
   bullet: {fileID: 6042819462001112269, guid: 95205c6c719614b7d83c00211904dca8, type: 3}
-  speed: 200
+  speed: 10
   zRot: -90
 --- !u!61 &2090807084
 BoxCollider2D:

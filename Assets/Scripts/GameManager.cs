@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
     private void Win(string player)
     {
         winTxt.text = player + " won!";
+
+        StartCoroutine(PlayAgain());
     }
 
     private IEnumerator PlayAgain()
